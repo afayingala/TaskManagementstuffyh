@@ -1,8 +1,8 @@
-// Configuration for your app
-// https://v2.quasar.dev/quasar-cli-vite/quasar-config-file
-
 import { defineConfig } from '#q-app/wrappers';
 import { fileURLToPath } from 'node:url';
+
+// Do not import VueApexCharts here, as it's not a Quasar plugin
+// import VueApexCharts from 'vue3-apexcharts';
 
 export default defineConfig((ctx) => {
   return {
@@ -14,7 +14,8 @@ export default defineConfig((ctx) => {
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
     boot: [
       'i18n',
-      'axios'
+      'axios',
+      'apexcharts' // <--- ADD THIS LINE HERE
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css
@@ -114,7 +115,10 @@ export default defineConfig((ctx) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Notify' 
+        // Do not add VueApexCharts here. Use a boot file instead.
+      ]
     },
 
     // animations: 'all', // --- includes all animations
@@ -123,21 +127,21 @@ export default defineConfig((ctx) => {
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#sourcefiles
     // sourceFiles: {
-    //   rootComponent: 'src/App.vue',
-    //   router: 'src/router/index',
-    //   store: 'src/store/index',
-    //   pwaRegisterServiceWorker: 'src-pwa/register-service-worker',
-    //   pwaServiceWorker: 'src-pwa/custom-service-worker',
-    //   pwaManifestFile: 'src-pwa/manifest.json',
-    //   electronMain: 'src-electron/electron-main',
-    //   electronPreload: 'src-electron/electron-preload'
-    //   bexManifestFile: 'src-bex/manifest.json
+    //   rootComponent: 'src/App.vue',
+    //   router: 'src/router/index',
+    //   store: 'src/store/index',
+    //   pwaRegisterServiceWorker: 'src-pwa/register-service-worker',
+    //   pwaServiceWorker: 'src-pwa/custom-service-worker',
+    //   pwaManifestFile: 'src-pwa/manifest.json',
+    //   electronMain: 'src-electron/electron-main',
+    //   electronPreload: 'src-electron/electron-preload'
+    //   bexManifestFile: 'src-bex/manifest.json
     // },
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-ssr/configuring-ssr
     ssr: {
       prodPort: 3000, // The default port that the production server should use
-                      // (gets superseded if process.env.PORT is specified at runtime)
+                       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [
         'render' // keep this as last one
@@ -160,7 +164,8 @@ export default defineConfig((ctx) => {
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-pwa/configuring-pwa
     pwa: {
-      workboxMode: 'GenerateSW' // 'GenerateSW' or 'InjectManifest'
+      // Corrected the pwa.workboxMode to be a string literal
+      workboxMode: 'GenerateSW'
       // swFilename: 'sw.js',
       // manifestFilename: 'manifest.json',
       // extendManifestJson (json) {},
@@ -222,13 +227,13 @@ export default defineConfig((ctx) => {
       // extendBexManifestJson (json) {},
 
       /**
-       * The list of extra scripts (js/ts) not in your bex manifest that you want to
-       * compile and use in your browser extension. Maybe dynamic use them?
-       *
-       * Each entry in the list should be a relative filename to /src-bex/
-       *
-       * @example [ 'my-script.ts', 'sub-folder/my-other-script.js' ]
-       */
+        * The list of extra scripts (js/ts) not in your bex manifest that you want to
+        * compile and use in your browser extension. Maybe dynamic use them?
+        *
+        * Each entry in the list should be a relative filename to /src-bex/
+        *
+        * @example [ 'my-script.ts', 'sub-folder/my-other-script.js' ]
+        */
       extraScripts: []
     }
   }
