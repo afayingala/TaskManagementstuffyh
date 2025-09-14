@@ -1,5 +1,5 @@
 <template>
-    <q-page class="project-management-page">
+    <q-page class="global-page">
       <div class="hero-section">
         <div class="hero-content">
           <div class="hero-text">
@@ -117,7 +117,8 @@
                     round
                     icon="visibility"
                     color="blue-6"
-                    @click="viewProject(props.row)"
+                    @click="$router.push({ name: 'ProjectDetail', params: { id: props.row.id } })"
+                  
                     class="action-btn"
                   >
                     <q-tooltip>View Details</q-tooltip>
@@ -198,7 +199,7 @@
             </div>
   
             <div class="project-card-actions">
-              <q-btn flat dense icon="visibility" color="blue-6" @click="viewProject(project)">
+              <q-btn flat dense icon="visibility" color="blue-6" @click="goToTProjectDetail(project.id)">
                 <q-tooltip>View</q-tooltip>
               </q-btn>
               <q-btn flat dense icon="edit" color="orange-6" @click="editProject(project)">
@@ -242,7 +243,7 @@
       />
   
       <q-dialog v-model="showDeleteDialog">
-        <q-card class="delete-dialog">
+        <q-card class="global-card">
           <q-card-section class="delete-header">
             <q-icon name="warning" color="red" size="32px" />
             <h3 class="delete-title">Delete Project</h3>
@@ -272,8 +273,10 @@
   <script setup lang="ts">
   import { ref, computed } from 'vue'
   import { QTableProps, useQuasar } from 'quasar'
+  import { useRouter } from 'vue-router'
   import AddProjectForm from 'src/components/Administrator/AddProjectForm.vue'
   import EditProjectForm from 'src/components/Administrator/EditProjectForm.vue'
+  import ProjectDetails from 'src/pages/Administrator/ProjectDetailsPage.vue'
   
   // Main Project interface - handle exactOptionalPropertyTypes
   interface Project {
@@ -353,7 +356,7 @@
       budget: 10000
     }
   ])
-  
+  const router = useRouter()
   const searchQuery = ref('')
   const viewMode = ref('table')
   const showAddProjectForm = ref(false)
@@ -402,13 +405,13 @@
     showEditProjectForm.value = true
   }
   
-  function viewProject(project: Project) {
-    $q.dialog({
-      title: project.name,
-      message: project.description || 'No description available',
-      ok: 'Close'
-    })
-  }
+  // function viewProject(project: Project) {
+  //   $q.dialog({
+  //     title: project.name,
+  //     message: project.description || 'No description available',
+  //     ok: 'Close'
+  //   })
+  // }
   
   function confirmDelete(project: Project) {
     projectToDelete.value = project
@@ -493,7 +496,9 @@
       closeEditForm()
     }
   }
-  
+  function goToTProjectDetail(projectId: number) {
+  router.push({ name: 'ProjectDetail', params: { id: projectId.toString() } })
+}
   function deleteProject() {
     if (projectToDelete.value) {
       projects.value = projects.value.filter(p => p.id !== projectToDelete.value!.id)
@@ -510,6 +515,7 @@
   function closeAddForm() {
     showAddProjectForm.value = false
   }
+
   
   function closeEditForm() {
     showEditProjectForm.value = false
@@ -570,13 +576,13 @@
   
   <style scoped>
   .project-management-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
     min-height: 100vh;
   }
   
   .hero-section {
     padding: 1.5rem 1.5rem;
-    color: white;
+    color: grey;
   }
   
   .hero-content {
@@ -592,10 +598,11 @@
     font-size: 2rem;
     font-weight: 800;
     margin-bottom: 0.25rem;
-    background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+    background: linear-gradient(135deg, #3c3f3f98 0%, #e0f7ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    
   }
   
   .hero-subtitle {

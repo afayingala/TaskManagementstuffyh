@@ -1,5 +1,5 @@
 <template>
-    <q-page padding>
+    <q-page class="global-page">
       <div class="q-pa-md">
         <!-- Page Title -->
         <div class="text-h5 q-mb-lg">📊 My Performance</div>

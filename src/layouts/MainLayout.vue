@@ -240,4 +240,23 @@ function logout () {
 .q-drawer--mini .q-item-section + .q-item-section {
   display: none;
 }
+.q-drawer--mini .q-item-section + .q-item-section {
+  position: absolute; /* Allows for precise positioning */
+  left: 60px; /* Position it just to the right of the icon */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Fine-tune vertical alignment */
+  background: #333; /* Dark background for visibility */
+  color: white; /* White text */
+  padding: 8px 12px;
+  border-radius: 6px;
+  white-space: nowrap; /* Prevents wrapping */
+  opacity: 0; /* Initially hidden */
+  pointer-events: none; /* Prevents it from blocking clicks */
+  transition: opacity 0.3s ease; /* Smooth fade-in effect */
+  z-index: 1000;
+}
+
+.q-drawer--mini .q-item:hover .q-item-section + .q-item-section {
+  opacity: 1; /* Make it visible on hover */
+}
 </style>

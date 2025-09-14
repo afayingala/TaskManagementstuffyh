@@ -1,20 +1,19 @@
 <template>
     <q-dialog v-model="isVisible" @hide="onClose">
       <q-card class="add-project-form-card"
-      style="max-height: 90vh; overflow-y: auto;" 
+      style="max-height: 90vh; overflow-y: auto; " 
       >
-        <div class="bg-gradient-to-r from-green-600 to-green-700 text-white px-6 py-4 " 
-    
-        >
+        <q-card-section class="bg-primary text-white">
           <div class="flex items-center justify-between">
             <div>
-              <h3 class="text-xl font-bold mb-1">
+              <div class="text-h6"> Create New Project</div>
+              <!-- <div class="text-xl font-bold mb-1">
                 <q-icon name="add_circle" class="mr-2" />
                 Create New Project
-              </h3>
-              <p class="text-green-100 text-sm">
-                Start a new project and set it up for success
-              </p>
+              </div> -->
+              <p class="text-subtitle2 q-mt-xs">Start a new project and set it up for success  </p>
+                
+            
             </div>
             <q-btn
               flat
@@ -25,7 +24,7 @@
               @click="onClose"
             />
           </div>
-        </div>
+        </q-card-section >
   
         <q-card-section class="p-6" >
           <q-form ref="projectForm" @submit.prevent="onSave" class="space-y-5">
