@@ -15,6 +15,7 @@ const routes: RouteRecordRaw[] = [
         { path: '', component: () => import('pages/DashboardPage.vue') },
        // { path: 'task-manager', component: () => import('pages\Administrator\ProjectManagementpage.vue') },
         { path: 'project-manager', component: () => import('pages/Administrator/ProjectManagementpage.vue') },
+        {path: 'project-manager/:id', name: 'ProjectDetail', component: () => import('pages/Administrator/ProjectDetailsPage.vue'), props: true},
         //{ path: 'employees', component: () => import('pages\AdministratorEmployeesPage.vue') },
         { path: 'tasks', component: () => import('pages/Employee/TaskPage.vue') },
          //{

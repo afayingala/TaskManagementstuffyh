@@ -1,4 +1,5 @@
 <template>
+    <q-page class="global-page">
     <q-card style="min-width: 800px">
       <q-card-section class="bg-primary text-white">
         <div class="flex justify-between items-center">
@@ -57,7 +58,7 @@
         :initial-date="selectedDay" 
       />
     </q-dialog>
-  
+  </q-page>
   </template>
   
   <script setup>
@@ -112,7 +113,7 @@
   <style scoped>
   /* Purple aesthetic overrides */
   .bg-primary {
-    background: linear-gradient(135deg, rgb(80, 55, 223) 0%, #313ae2e6 50%, #5246e0 100%) !important;
+    /* background: linear-gradient(135deg, rgb(80, 55, 223) 0%, #313ae2e6 50%, #5246e0 100%) !important; */
     box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
   }
   

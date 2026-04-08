@@ -1,5 +1,6 @@
 import { defineConfig } from '#q-app/wrappers';
 import { fileURLToPath } from 'node:url';
+import _variables from './src/css/quasar.variables.scss';
 
 // Do not import VueApexCharts here, as it's not a Quasar plugin
 // import VueApexCharts from 'vue3-apexcharts';
@@ -20,7 +21,7 @@ export default defineConfig((ctx) => {
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css
     css: [
-      'app.scss'
+      'app.scss', '_variables.scss'
     ],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras

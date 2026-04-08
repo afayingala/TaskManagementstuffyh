@@ -1,5 +1,5 @@
 <template>
-  <q-page padding>
+  <q-page class="global-page">
     <q-card class="q-pa-lg shadow-2 rounded-borders">
       <q-card-section class="row items-center">
         <q-avatar size="100px" class="q-mr-lg bg-primary text-white text-h3">
@@ -142,7 +142,7 @@ function updateProfile() {
 }
 
 .q-page {
-  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+  /* background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%); */
   display: flex;
   flex-direction: column;
   align-items: center;

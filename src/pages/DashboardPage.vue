@@ -55,7 +55,7 @@ const adminRecentActivity = ref([
       </q-toolbar>
     </q-header>
   -->
-    <q-page padding>
+  <q-page class="global-page">
       <!-- Employee Dashboard -->
       <div v-if="role === 'Employee'">
         <!-- Key Metrics -->
@@ -92,7 +92,7 @@ const adminRecentActivity = ref([
         </div>
 
         <!-- Recent Activity -->
-        <q-card>
+        <q-card class="global-card">
           <q-card-section>
             <div class="text-h6">Recent Activity</div>
           </q-card-section>
@@ -115,7 +115,7 @@ const adminRecentActivity = ref([
       <div v-else-if="role === 'Administrator'">
         <!-- Top-Level Metrics -->
         <div class="metric-cards q-mb-md">
-          <q-card class="col">
+          <q-card class="global-card">
             <q-card-section class="text-center">
               <div class="row no-wrap items-center justify-center">
       <span class="text-h6">Total Projects</span>
@@ -124,7 +124,7 @@ const adminRecentActivity = ref([
               <div class="text-h5">{{ adminMetrics.totalProjects }}</div>
             </q-card-section>
           </q-card>
-          <q-card class="col">
+          <q-card class="global-card">
             <q-card-section class="text-center">
               <div class="row no-wrap items-center justify-center">
       <span class="text-h6">Total Tasks</span>
@@ -139,7 +139,7 @@ const adminRecentActivity = ref([
 
         <!-- Company Performance -->
         <div class="metric-cards q-mb-md">
-          <q-card class="col">
+          <q-card class="global-card">
             <q-card-section class="text-center">
 
               <div class="row no-wrap items-center justify-center">
@@ -149,7 +149,7 @@ const adminRecentActivity = ref([
               <div class="text-h5">{{ adminMetrics.averageProductivity }}%</div>
             </q-card-section>
           </q-card>
-          <q-card class="col">
+          <q-card class="global-card">
             <q-card-section class="text-center">
               <div class="row no-wrap items-center justify-center">
               <span class="text-h6">Overall Company Score</span>
@@ -161,7 +161,7 @@ const adminRecentActivity = ref([
         </div>
 
         <!-- Recent Activity -->
-        <q-card>
+        <q-card class="global-card">
           <q-card-section>
             <div class="text-h6">Recent Activity</div>
             <div class="text-caption">Latest updates from your team</div>
@@ -188,7 +188,7 @@ const adminRecentActivity = ref([
 <style scoped>
 /* Modern Dashboard Styling */
 .q-page {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  /* background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
   min-height: 100vh;
   padding: 24px;
 }

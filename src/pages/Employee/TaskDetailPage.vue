@@ -1,5 +1,5 @@
 <template>
-    <q-page class="p-6 bg-gray-50 min-h-screen">
+    <q-page class="global-page">
       <div class="bg-white shadow rounded-lg p-6 mb-6">
         <div class="flex justify-between items-center mb-4 header-container">
           <div>
@@ -161,7 +161,7 @@
   <style lang="scss" scoped>
   /* Page background with gradient */
   .q-page {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    // background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     min-height: 100vh;
     position: relative;
     

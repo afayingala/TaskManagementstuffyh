@@ -2,18 +2,17 @@
 
 
 <template>
-  <q-page class="min-h-screen bg-gray-50">
+  <q-page class="global-page">
     <!-- Top Buttons -->
     <div class="flex justify-start space-x-4 mb-6 px-6 pt-6">
-      <q-btn
-        @click="openAddTaskForm"
-        class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700"
-        no-caps
-        unelevated
-        icon="add"
-      >
-        Add Task
-      </q-btn>
+      <BaseButton
+  l label="Add Task"
+  icon="add"
+  class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700"
+  no-caps
+  unelevated
+  @click="openAddTaskForm"
+/>
       <q-btn
         @click="openPlanWeekForm"
         class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-green-700"
@@ -124,6 +123,7 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import AddTaskForm from 'src/components/Employee/AddTaskForm.vue' 
 import PlanWeekForm from 'src/components/Employee/PlanWeekForm.vue'
+import BaseButton from 'src/components/BaseButton.vue'
 
 // ADDED: The Task interface to define the type of a task object
 interface Task {

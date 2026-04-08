@@ -1,14 +1,15 @@
 <template>
     <q-dialog v-model="isVisible" @hide="onClose">
-      <q-card class="edit-project-form-card">
-        <q-card-section class="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+      <q-card class="edit-project-form-card"
+      style="max-height: 90vh; overflow-y: auto;">
+        <q-card-section class="bg-primary text-white">
           <div class="flex items-center justify-between">
             <div>
-              <h3 class="text-xl font-bold mb-1">
+              <div class="text-h6">
                 <q-icon name="edit" class="mr-2" />
                 Edit Project
-              </h3>
-              <p class="text-blue-100 text-sm">
+              </div>
+              <p class="text-subtitle2 q-mt-xs">
                 Update project details and settings
               </p>
             </div>
@@ -210,10 +211,15 @@
             <!-- Change Summary -->
             <div v-if="hasChanges" class="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
               <div class="flex items-start">
-                <q-icon name="warning" color="amber-6" class="mr-2 mt-0.5" />
+                
                 <div>
-                  <h4 class="text-sm font-semibold text-amber-800 mb-1">Pending Changes</h4>
-                  <ul class="text-xs text-amber-700 space-y-1">
+
+                    <div class="text-h6 text-amber-700">
+                      <q-icon name="warning" color="amber-6" class="q-pa-xs " size="14px" />
+                      Pending Changes
+                    </div>
+          
+                  <ul class="text-xs text-amber-700 space-y-1 q-py-none">
                     <li v-for="change in changes" :key="change">{{ change }}</li>
                   </ul>
                 </div>
@@ -228,7 +234,7 @@
             <q-btn
               flat
               label="Revert Changes"
-              color="grey-6"
+              color="grey"
               icon="restore"
               @click="revertChanges"
               :disable="!hasChanges"
